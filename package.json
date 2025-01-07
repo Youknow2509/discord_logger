@@ -1,0 +1,19 @@
+{
+  "name": "discord_log",
+  "version": "1.0.0",
+  "description": "Microservice Logger With Discord",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "lytranvinh.work@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.17.2"
+  },
+  "devDependencies": {
+    "amqplib": "^0.10.5",
+    "dotenv": "^16.4.7"
+  }
+}

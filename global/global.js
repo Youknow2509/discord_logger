@@ -1,0 +1,7 @@
+
+global.TOKEN
+global.CHANGLE_ID
+global.DISCORD_CLIENT
+global.CHANNEL_LOGGER
+global.RABBITMQ_URL
+global.CHANNEL_RABBITMQ
