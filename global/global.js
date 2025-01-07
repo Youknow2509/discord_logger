@@ -14,3 +14,5 @@ global.KEY_API_WEATHER
 
 global.APPLICATION_ID
 global.GUILD_ID
+
+global.CHANNEL_ID

@@ -8,7 +8,7 @@ const load_config = async () => {
     global.RABBITMQ_URL = process.env.RABBITMQ_URL;
     global.KEY_API_WEATHER = process.env.KEY_API_WEATHER;
     global.APPLICATION_ID = process.env.APPLICATION_ID;
-    global.APPLICATION_ID = process.env.APPLICATION_ID;
+    global.GUILD_ID = process.env.GUILD_ID;
 };
 
 export default load_config;
