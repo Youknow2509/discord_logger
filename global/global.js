@@ -11,3 +11,6 @@ global.LOGGER_WARNING = "waring"
 global.LOGGER_DANGER = "danger"
 
 global.KEY_API_WEATHER
+
+global.APPLICATION_ID
+global.GUILD_ID
