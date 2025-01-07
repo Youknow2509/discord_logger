@@ -5,6 +5,7 @@ import initRabbitmqComsummer from './rabbitmq.js';
 import consumeMessages from '../service/consumeMessages.js';
 import send_embed from '../service/send_embed.js';
 import initServer from './server.js';
+import initSlashCommand from './initSlashCommand.js';
 
 const init = async () => {
     await load_config();
@@ -17,7 +18,7 @@ const init = async () => {
     global.DISCORD_CLIENT = clientInstance;
 
     const channel = await clientInstance.channels.fetch(global.CHANNEL_ID);
-    console.log(channel);
+    // console.log(channel);
     if (!channel) {
         console.error('Channel not found');
         return;
@@ -28,12 +29,12 @@ const init = async () => {
 
     console.log('Bot is ready');
 
-    await initRabbitmqComsummer();
+    // await initRabbitmqComsummer();
     console.log('RabbitMQ consumer is ready');
 
     const bindingKey = 'logger.info';
     const exchange = 'logger_discord';
-    await consumeMessages(global.CHANNEL_RABBITMQ, exchange, bindingKey);
+    // await consumeMessages(global.CHANNEL_RABBITMQ, exchange, bindingKey);
 
     send_embed(
         global.CHANNEL_LOGGER,
@@ -49,6 +50,9 @@ const init = async () => {
     app.listen(port, () => {
         console.log(`Example app listening on port ${port}`);
     });
+
+    // init slash commands
+    await initSlashCommand(global.TOKEN);
 };
 
 export default init;

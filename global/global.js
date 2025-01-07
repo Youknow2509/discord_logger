@@ -9,3 +9,5 @@ global.CHANNEL_RABBITMQ
 global.LOGGER_INFO = "info"
 global.LOGGER_WARNING = "waring"
 global.LOGGER_DANGER = "danger"
+
+global.KEY_API_WEATHER

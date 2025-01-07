@@ -6,6 +6,7 @@ const load_config = async () => {
     global.TOKEN = process.env.TOKEN;
     global.CHANNEL_ID = process.env.CHANNEL_ID;
     global.RABBITMQ_URL = process.env.RABBITMQ_URL;
+    global.KEY_API_WEATHER = process.env.KEY_API_WEATHER;
 };
 
 export default load_config;
