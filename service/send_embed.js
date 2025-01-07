@@ -1,7 +1,22 @@
 
-const send_embed = async (channel, topic, bindingKey, body) => {
+const send_embed = async (channel, topic, bindingKey, body, type) => {
+    var cl;
+    switch (type) {
+        case global.LOGGER_INFO:
+            cl = 0x0099ff;
+            break;
+        case global.LOGGER_WARNING:
+            cl = 0xFFE600;
+            break;
+        case global.LOGGER_DANGER:
+            cl = 0xFF001A;
+            break;
+        default:
+            cl = 0x0099ff;
+    }
+
     const embed = {
-        color: 0x0099ff,
+        color: cl,
         title: 'Logger',
         url: 'https://github.com/Youknow2509/',
         author: {

@@ -20,7 +20,7 @@ const consumeMessages = async (channel, topic, bindingKey) => {
             
             // send_message(global.CHANNEL_LOGGER, body);
             send_embed(global.CHANNEL_LOGGER, topic, bindingKey, body);
-            console.log(`Type:: ${typeof body}, Data:: `, body);
+            console.log(`Type:: ${typeof body}, Data:: `, body, global.LOGGER_INFO);
 
         }, { noAck: true });
     

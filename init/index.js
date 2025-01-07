@@ -3,6 +3,7 @@ import client from './client_instance.js';
 import login from './login.js';
 import initRabbitmqComsummer from './rabbitmq.js';
 import consumeMessages from '../service/consumeMessages.js'
+import send_embed from '../service/send_embed.js'
 
 const init = async () => {
 
@@ -33,6 +34,8 @@ const init = async () => {
     const bindingKey = "logger.info";
     const exchange = "logger_discord"
     await consumeMessages(global.CHANNEL_RABBITMQ, exchange, bindingKey);
+
+    send_embed(global.CHANNEL_LOGGER, exchange, "", "Logger started !!!", global.LOGGER_WARNING);
 
 };
 
