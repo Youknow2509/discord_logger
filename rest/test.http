@@ -1,0 +1,10 @@
+@baseUrl=http://localhost:3333/
+
+# user registration
+POST http://localhost:3333/logger?data=abcd
+Content-Type: application/json
+
+{
+  "email": "lvt2542004@gmail.com",
+  "purpose": "test"
+}
