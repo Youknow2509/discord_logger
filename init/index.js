@@ -6,6 +6,7 @@ import consumeMessages from '../service/consumeMessages.js';
 import send_embed from '../service/send_embed.js';
 import initServer from './server.js';
 import registerSlashCommand from './registerSlashCommand.js';
+import excuteSlashCommand from './excuteSlashCommand.js';
 
 const init = async () => {
     // Load config
@@ -22,6 +23,7 @@ const init = async () => {
 
     // handle slash commands
     await registerSlashCommand(global.TOKEN);
+    await excuteSlashCommand(clientInstance);
 
     // get channel discord instance
     await getChannelDiscord(clientInstance, global.CHANNEL_ID);

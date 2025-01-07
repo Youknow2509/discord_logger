@@ -32,7 +32,7 @@ const execute = async (interaction) => {
     try {
         const city = interaction.options.getString('city');
         const url = `https://api.weatherapi.com/v1/current.json?key=${global.KEY_API_WEATHER}&q=${city}`;
-
+        // await interaction.reply(url);
         axios
             .get(url)
             .then((response) => {
@@ -42,6 +42,7 @@ const execute = async (interaction) => {
             })
             .catch((error) => {
                 console.error(`Error: ${error.message}`);
+                interaction.reply(`Error: ${error.message}`);
             });
     } catch (error) {
         console.error(error);
