@@ -14,4 +14,12 @@
   TOKEN=@@@@
   CHANNEL_ID="@@@@"
   RABBITMQ_URL="@@@@"
+  PORT_SERVER = 3333
+  KEY_API_WEATHER=@@@@
+  GUILD_ID="@@@@"
+  CLIENT_ID_GG="@@@@"
+  PROJECT_ID_GG="@@@@"
+  CLIENT_SECRET_GG="@@@@"
+  TOKEN_GG="@@@@"
+  REFRESH_TOKEN_GG="@@@@"
 ```
