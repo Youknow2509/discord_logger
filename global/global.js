@@ -22,3 +22,10 @@ global.PROJECT_ID_GG
 global.CLIENT_SECRET_GG
 global.TOKEN_GG
 global.REFRESH_TOKEN_GG
+// redis
+global.REDIS_URL
+global.REDIS_CLIENT
+global.REDIS_USER
+global.REDIS_PASSWORD
+global.REDIS_HOST
+global.REDIS_PORT

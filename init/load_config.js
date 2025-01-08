@@ -15,6 +15,12 @@ const load_config = async () => {
     global.CLIENT_SECRET_GG = process.env.CLIENT_SECRET_GG;
     global.TOKEN_GG = process.env.TOKEN_GG;
     global.REFRESH_TOKEN_GG = process.env.REFRESH_TOKEN_GG;
+    // redis
+    global.REDIS_URL = process.env.REDIS_URL;
+    global.REDIS_USER = process.env.REDIS_USER;
+    global.REDIS_PASSWORD= process.env.REDIS_PASSWORD;
+    global.REDIS_HOST= process.env.REDIS_HOST;
+    global.REDIS_PORT= process.env.REDIS_PORT;
 };
 
 export default load_config;

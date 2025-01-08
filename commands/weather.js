@@ -29,25 +29,39 @@ const data = new SlashCommandBuilder()
 
 const execute = async (interaction) => {
     if (!interaction.isCommand()) return;
+    
+    const city = interaction.options.getString('city').toUpperCase();
+    // check data in redis
+    const key = `weather::${city}`;
+    const value = await global.REDIS_CLIENT.get(key);
+    if (value) {
+        await interaction.reply(value);
+        return;
+    }
+
+    const data = await getDataApi(city);
+    if (!data) {
+        await interaction.reply(`Không tìm thấy thông tin thời tiết tại thành phố ${city}`);
+        return;
+    }
+    const message = createWeatherMessage(data);
+    await global.REDIS_CLIENT.set(key, message);
+    await global.REDIS_CLIENT.expire(key, 60*60*3); // 2 hours
+
+    await interaction.reply(message);
+};
+
+const getDataApi = async (city) => {
+    const url = `https://api.weatherapi.com/v1/current.json?key=${global.KEY_API_WEATHER}&q=${city}`;
     try {
-        const city = interaction.options.getString('city');
-        const url = `https://api.weatherapi.com/v1/current.json?key=${global.KEY_API_WEATHER}&q=${city}`;
-        // await interaction.reply(url);
-        axios
-            .get(url)
-            .then((response) => {
-                var data = response.data;
-                const weatherMessage = createWeatherMessage(data);
-                interaction.reply(weatherMessage);
-            })
-            .catch((error) => {
-                console.error(`Error: ${error.message}`);
-                interaction.reply(`Error: ${error.message}`);
-            });
+        const response = await axios.get(url);
+
+        return response.data;
     } catch (error) {
         console.error(error);
+        return null;    
     }
-};
+}
 
 export default {
     data,

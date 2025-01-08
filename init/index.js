@@ -7,12 +7,17 @@ import send_embed from '../service/send_embed.js';
 import initServer from './server.js';
 import registerSlashCommand from './registerSlashCommand.js';
 import excuteSlashCommand from './excuteSlashCommand.js';
+import { initRedis, connectRedis } from './redis.js';
 
 const init = async () => {
     // Load config
     await load_config();
     console.log('Loaded config');
 
+    // init redis
+    await initRedis();
+    await connectRedis();
+    
     // Create client instance
     const clientInstance = await client();
     console.log('Client instance created');

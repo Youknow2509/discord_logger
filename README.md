@@ -22,4 +22,8 @@
   CLIENT_SECRET_GG="@@@@"
   TOKEN_GG="@@@@"
   REFRESH_TOKEN_GG="@@@@"
+  REDIS_USER="@@@@"
+  REDIS_PASSWORD="@@@@"
+  REDIS_HOST="@@@@"
+  REDIS_PORT=@@@@
 ```
