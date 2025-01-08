@@ -5,13 +5,16 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "start": "node src/index.js",
+    "test": "node src/test.js",
+    "build": "netlify-lambda build src",
+    "serve": "netlify-lambda serve src"
   },
   "author": "lytranvinh.work@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.17.2"
+    "discord.js": "^14.17.2",
+    "netlify-lambda": "^2.0.16"
   },
   "devDependencies": {
     "amqplib": "^0.10.5",
