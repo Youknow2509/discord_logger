@@ -1,35 +1,22 @@
-import axios from 'axios';
+import token_info from './token_info.js';
+import handle_refresh_token from './handle_refresh_token.js';
 
-const get_access_token = async (client_id, client_secret, refresh_token) => {
-    const url = 'https://oauth2.googleapis.com/token';
-    const headers = {
+const get_access_token = async (client_id, client_secret, refresh_token_ip) => {
+    const globalAccessToken = global.TOKEN_GG; // Renamed to avoid conflict
+    const isAccessTokenValid = await token_info(globalAccessToken); // Renamed for clarity
+    if (isAccessTokenValid) {
+        console.log('Access token is valid, using the global one');
+        return globalAccessToken; // Return the global access token if valid
+    }
 
-    };
-    const data = {
+    const newAccessToken = await handle_refresh_token(
         client_id,
-        client_secret, 
-        refresh_token,
-        grant_type: "refresh_token"
-    };
-
-    // console.log(data);
-
-    axios
-            .post(url, data)
-            .then((response) => {
-                var data = response.data;
-                // console.log(data);
-                const access_token = data?.access_token;
-                const expires_in = data?.expires_in;
-                const scope = data?.scope;
-                const token_type = data?.token_type;
-
-                console.log(`Access Token: ${access_token}`);
-            })
-            .catch((error) => {
-                console.error(`Error: ${error.message}`);
-                // interaction.reply(`Error: ${error.message}`);
-            });
-}
+        client_secret,
+        refresh_token_ip
+    );
+    global.TOKEN_GG = newAccessToken; // Update the global access token
+    console.log(`New access token: ${newAccessToken}`);
+    return newAccessToken;
+};
 
 export default get_access_token;
