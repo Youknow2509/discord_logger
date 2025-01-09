@@ -1,12 +1,7 @@
 
 import load_config from './init/load_config.js';
-
-import { initRedis, getRedis } from './init/redis.js';
+import chat_ai from './commands/chat_ai.js';
 
 await load_config();
 
-await initRedis();
-
-const r = await getRedis();
-
-await r.connect();
+await chat_ai();

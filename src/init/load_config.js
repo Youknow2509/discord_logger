@@ -21,6 +21,8 @@ const load_config = async () => {
     global.REDIS_PASSWORD= process.env.REDIS_PASSWORD;
     global.REDIS_HOST= process.env.REDIS_HOST;
     global.REDIS_PORT= process.env.REDIS_PORT;
+    // open ai
+    global.OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 };
 
 export default load_config;

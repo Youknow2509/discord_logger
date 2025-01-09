@@ -26,4 +26,5 @@
   REDIS_PASSWORD="@@@@"
   REDIS_HOST="@@@@"
   REDIS_PORT=@@@@
+  OPENAI_API_KEY="@@@@"
 ```

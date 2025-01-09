@@ -29,3 +29,6 @@ global.REDIS_USER
 global.REDIS_PASSWORD
 global.REDIS_HOST
 global.REDIS_PORT
+
+// open ai
+global.OPENAI_API_KEY
