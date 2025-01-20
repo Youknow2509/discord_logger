@@ -10,6 +10,12 @@ const execute = async (interaction) => {
 
     try {
         await interaction.deferReply(); // Acknowledge the command
+        
+        const cache = await checkCache();
+        if (cache) {
+            await interaction.editReply({ embeds: [cache] });
+            return;
+        }
 
         const data = await getData();
         const dataTable = await getDataTable(data);
@@ -38,10 +44,23 @@ const execute = async (interaction) => {
             }
         }
 
+        // save in cache
+        const key = `pnj`;
+        await global.REDIS_CLIENT.set(key, JSON.stringify(embed));
+
         await interaction.editReply({ embeds: [embed] });
     } catch (e) {
         console.error(e);
     }
+};
+
+const checkCache = async () => {
+    const key = `pnj`;
+    const cache = await global.REDIS_CLIENT.get(key);
+    if (cache) {
+        return JSON.parse(cache);
+    }
+    return null;
 };
 
 export default {
