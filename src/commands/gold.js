@@ -1,0 +1,50 @@
+import { SlashCommandBuilder } from 'discord.js';
+import { getData, getDataTable, getTimeData } from '../service/pnj/index.js';
+
+const data = new SlashCommandBuilder()
+    .setName('gold')
+    .setDescription('Lấy giá vàng PNJ gần nhất.');
+
+const execute = async (interaction) => {
+    if (!interaction.isCommand()) return;
+
+    try {
+        await interaction.deferReply(); // Acknowledge the command
+
+        const data = await getData();
+        const dataTable = await getDataTable(data);
+        const timeData = await getTimeData(data);
+
+        var embed = {
+            color: 0x0099ff,
+            title: `Giá vàng: ${timeData}`,
+            // description: 'Here is the response from AI',
+            author: {
+                name: 'Ly Tran Vinh',
+                icon_url: 'https://avatars.githubusercontent.com/u/88392742',
+                url: 'https://github.com/Youknow2509/',
+            },
+            fields: [],
+        };
+
+        for (var i = 0; i < dataTable.length; i++) {
+            var sizr_arr = dataTable[i].length;
+            console.log(dataTable[i]);
+            if (sizr_arr === 3) {
+                embed.fields.push({
+                    name: dataTable[i][0],
+                    value: `Bán ra: ${dataTable[i][1]} - Mua vào: ${dataTable[i][2]}`,
+                });
+            }
+        }
+
+        await interaction.editReply({ embeds: [embed] });
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+export default {
+    data,
+    execute,
+};

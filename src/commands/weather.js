@@ -30,25 +30,27 @@ const data = new SlashCommandBuilder()
 const execute = async (interaction) => {
     if (!interaction.isCommand()) return;
     
+    await interaction.deferReply(); // Acknowledge the command
+
     const city = interaction.options.getString('city').toUpperCase();
     // check data in redis
     const key = `weather::${city}`;
     const value = await global.REDIS_CLIENT.get(key);
     if (value) {
-        await interaction.reply(value);
+        await interaction.editReply(value);
         return;
     }
 
     const data = await getDataApi(city);
     if (!data) {
-        await interaction.reply(`Không tìm thấy thông tin thời tiết tại thành phố ${city}`);
+        await interaction.editReply(`Không tìm thấy thông tin thời tiết tại thành phố ${city}`);
         return;
     }
     const message = createWeatherMessage(data);
     await global.REDIS_CLIENT.set(key, message);
     await global.REDIS_CLIENT.expire(key, 60*60*3); // 2 hours
 
-    await interaction.reply(message);
+    await interaction.editReply(message);
 };
 
 const getDataApi = async (city) => {

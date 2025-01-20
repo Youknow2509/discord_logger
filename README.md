@@ -5,6 +5,13 @@
 # Introduction
 - Microservice logger with rabbitmq
 
+# List slash commands
+| Prefix | Command | Description |
+| ------ | --------|-------------|
+| /ping | ping | reply pong |
+| /weather | weather | get weather in the city |
+| /chat-ai | chat-ai | use openai api for chat box |
+
 # Template file envairoment
 - Create a file `.env`
 ```env
