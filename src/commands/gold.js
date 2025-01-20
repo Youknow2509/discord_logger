@@ -47,6 +47,7 @@ const execute = async (interaction) => {
         // save in cache
         const key = `pnj`;
         await global.REDIS_CLIENT.set(key, JSON.stringify(embed));
+        await global.REDIS_CLIENT.expire(key, 60*60*7); // 6 hours
 
         await interaction.editReply({ embeds: [embed] });
     } catch (e) {
