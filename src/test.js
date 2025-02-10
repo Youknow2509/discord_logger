@@ -1,20 +1,10 @@
-// import load_config from './init/load_config.js';
-import { getData, getDataTable, getTimeData } from './service/pnj/index.js';
+import { get_data_api, pare_data } from './service/gold/doji/index.js';
 
-// await load_config();
+var data = await get_data_api();
 
-var data = await getData();
+const pare_d = pare_data(data);
 
-// console.log(data);
-
-var table = await getDataTable(data);
-
-// console.log(table);
-
-var timeData = await getTimeData(data);
-
-if (timeData) {
-    console.log('Time: ', timeData);
-} else {
-    console.log('Error getting time data');
-}
+console.log("Type of data after pare: " + typeof pare_d);
+const json_string = JSON.stringify(pare_d);
+console.log("Data after pare: ");
+console.log(json_string);

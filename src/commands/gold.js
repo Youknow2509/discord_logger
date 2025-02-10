@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from 'discord.js';
-import { getData, getDataTable, getTimeData } from '../service/pnj/index.js';
+import { getData, getDataTable, getTimeData } from '../service/gold/pnj/index.js';
 
 const data = new SlashCommandBuilder()
     .setName('gold')
