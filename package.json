@@ -6,9 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "test": "node src/test.js",
-    "build": "netlify-lambda build src",
-    "serve": "netlify-lambda serve src"
+    "test": "node src/test.js"
   },
   "author": "lytranvinh.work@gmail.com",
   "license": "ISC",
